@@ -12,7 +12,9 @@ export const prepareTheme = (darkMode?: boolean, fontName?: string) => {
 
   return vscodeDarkInit({
     settings: {
-      fontFamily
+      fontFamily,
+      background: '#1f1f1f',
+      gutterBackground: '#1f1f1f'
     }
   });
 }
