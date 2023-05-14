@@ -9,6 +9,7 @@ import {MonacoSettings} from "~/services/config";
 
 import {prepareTheme} from "../themes";
 import "./CodeEditor.css";
+import clsx from "clsx";
 
 interface OwnProps {}
 
@@ -54,7 +55,6 @@ const CodeEditor: React.FC<Props> = (
     dispatch
   }
 ) => {
-  // const editor = useRef();
   const theme = useMemo(() => (
     prepareTheme(darkMode, monaco.fontFamily)
   ), [darkMode, monaco.fontFamily]);
@@ -63,7 +63,11 @@ const CodeEditor: React.FC<Props> = (
     <CodeMirror
       value={code}
       readOnly={loading}
-      className="CodeEditor"
+      className={
+        clsx("CodeEditor", {
+          "CodeEditor--Ligatures": monaco.fontLigatures
+        })
+      }
       extensions={extensions}
       theme={theme}
       indentWithTab={true}
